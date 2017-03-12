@@ -3,7 +3,7 @@
         <h2 class="section-heading">Newsfeed</h2>
         <h3 class="section-subheading text-muted">Hello <strong>{{ main.username || "user" }}, </strong> Check other Portfolios here.</h3>
     </div>
-    <section>
+    <section ng-show="!main.isLoggedIn">
       <div class="container">
         <h3 class="section-subheading text-muted"><a href="/register"><strong>Sign Up First.</strong></a></h3>
 
