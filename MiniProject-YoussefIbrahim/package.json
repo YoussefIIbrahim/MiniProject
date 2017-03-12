@@ -1,0 +1,34 @@
+{
+  "name": "meantutorial",
+  "version": "1.0.0",
+  "description": "mean stack application",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "keywords": [
+    "Studet",
+    "Portfolio"
+  ],
+  "author": "David Acosta",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt-nodejs": "*",
+    "body-parser": "*",
+    "express": "*",
+    "express-session": "*",
+    "jsonwebtoken": "*",
+    "mongoose": "*",
+    "mongoose-title-case": "*",
+    "mongoose-validator": "*",
+    "morgan": "*",
+    "multer": "^1.3.0",
+    "nodemailer": "*",
+    "nodemailer-sendgrid-transport": "*",
+    "passport": "*",
+    "passport-facebook": "*",
+    "passport-google-oauth": "*",
+    "passport-twitter": "*"
+  }
+}

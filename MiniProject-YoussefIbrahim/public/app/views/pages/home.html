@@ -1,0 +1,92 @@
+<div class="row text-center">
+    <div class="container">
+        <h2 class="section-heading">Newsfeed</h2>
+        <h3 class="section-subheading text-muted">Hello <strong>{{ main.username || "user" }}, </strong> Check other Portfolios here.</h3>
+    </div>
+    <section>
+      <div class="container">
+        <h3 class="section-subheading text-muted"><a href="/register"><strong>Sign Up First.</strong></a></h3>
+
+      </div>
+    </section>
+    <!-- Input For Filter  -->
+    <section ng-show="main.isLoggedIn">
+    <div>
+        <div class="col-lg-4">
+            <div class="input-group">
+                <span class="input-group-addon">Results to display:</span>
+                <input type="text" class="form-control" ng-model="number">
+            </div>
+            <br>
+            <!-- Apply Button Filter -->
+            <button type="button" ng-click="user.showMore(number);" class="btn btn-success">Apply Filter</button>
+
+            <!--/ Show All Button -->
+            <button type="button" ng-click="user.showAll();" class="btn btn-warning">Show All</button>
+        </div>
+    </div>
+
+    <!-- Container: Start -->
+
+        <!-- Simple Search Bar -->
+        <div class="navbar-form">
+            <div class="input-group">
+                <!-- Search Input -->
+                <input type="text" class="form-control" name="search" placeholder="search for..." ng-model="searchKeyword">
+            </div>
+            <br>
+            <br>
+            <!-- Serach Button -->
+            <button type="button" ng-click="user.search(searchKeyword, number);" class="btn btn-info">Search</button>
+            <!-- Clear Button -->
+            <button type="button" ng-click="user.clear();" class="btn btn-danger">Clear</button>
+            <!-- Advanced Search Button -->
+        </div>
+        <!-- Simple Search Bar /-->
+
+        <!-- Custom Error Message -->
+        <div class="row show-hide-message" ng-show="user.showMoreError">
+            <div class="alert alert-danger">{{ user.showMoreError }}</div>
+        </div>
+        <!-- Custom Error Message -->
+
+    </div>
+    <!-- Container: End -->
+
+    <br>
+
+    <!-- Total Search Results -->
+    <div ng-show="searchFilter !== undefined">
+        <p><strong>Total results: </strong>{{ (user.users | filter: searchFilter).length }}</p>
+    </div>
+
+    <!-- Results Being Shown -->
+    <div ng-show="searchFilter !== undefined">
+        <p><strong>Showing: </strong>{{( user.users | filter: searchFilter | limitTo: user.limit).length }}</p>
+    </div>
+
+    <br>
+    <br>
+    <br>
+
+
+    <div class="row">
+      <div ng-repeat="mat in user.others | filter: searchKeyword" class="col-sm-4">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">{{mat.username}}</h3>
+          </div>
+          <div  ng-repeat="task in mat.content | filter: searchFilter | limitTo: user.limit" class="panel-body">
+						{{task || "Nothing Posted Yet"}}
+					</div>
+          <div class="text-center">
+						<button type="text" class="btn btn-default"><a  href="https://secourse.co/schedule"> <strong>See Full Portfolio</strong></a></button>
+          </div>
+      </div><!-- /.col-sm-4 -->
+    </div>
+		<br>
+		<br>
+	</div>
+
+
+</section>
